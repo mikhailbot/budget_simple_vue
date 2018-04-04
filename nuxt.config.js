@@ -34,5 +34,33 @@ module.exports = {
         })
       }
     }
-  }
+  },
+
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth',
+  ],
+
+  router: {
+    middleware: ['auth']
+  },
+
+  axios: {
+    baseURL: 'http://budget_simple.local:4000'
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/sessions', method: 'post', propertyName: 'access_token' },
+          logout: { url: '/api/sessions', method: 'delete' },
+          user: { url: '/api/users', method: 'get', propertyName: 'data' }
+        },
+        tokenType: '',
+      }
+    }
+  },
+
+  css: ['~/assets/style.css']
 }

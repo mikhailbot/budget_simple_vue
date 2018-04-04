@@ -1,1 +1,5 @@
-@import 'tachyons';
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
+
+.outline-0 { outline: 0; }
