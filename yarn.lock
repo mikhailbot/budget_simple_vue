@@ -5777,10 +5777,6 @@ table@4.0.2:
     slice-ansi "1.0.0"
     string-width "^2.1.1"
 
-tachyons@^4.9.1:
-  version "4.9.1"
-  resolved "https://registry.yarnpkg.com/tachyons/-/tachyons-4.9.1.tgz#f88d7059d6e53c833bf9351a26f18314c8fdc76a"
-
 tailwindcss@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-0.5.2.tgz#eded994f26ee9715e2bb13ba82ed087637994e15"
