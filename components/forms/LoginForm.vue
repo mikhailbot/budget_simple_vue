@@ -11,7 +11,7 @@
         <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
           Password
         </label>
-        <input class="bg-grey-lighter appearance-none border-2 border-grey-lighter focus:border-blue rounded w-full py-2 px-4 text-grey-darker outline-0" v-model="session.password" type="password">
+        <input class="bg-grey-lighter appearance-none border-2 border-grey-lighter focus:border-blue rounded w-full py-2 px-4 text-grey-darker outline-0" v-model="session.password" type="password" @keyup.enter="login">
       </div>
       <div class="mb-6 text-red font-bold" v-if="this.error.length">
         {{ this.error}}
