@@ -1,7 +1,7 @@
 <template>
-  <div class="h-screen bg-blue w-screen">
+  <div>
     <header class="pt-8 px-8">
-      <nav class="flex items-center justify-between flex-row-reverse">
+      <nav class="flex items-center justify-between">
         <div class="text-4xl text-blue font-bold rounded-full h-16 w-16 flex items-center justify-center bg-grey-lightest">
           B
         </div>
