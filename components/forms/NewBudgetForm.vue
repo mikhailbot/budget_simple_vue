@@ -28,7 +28,7 @@ export default {
     async createBudget () {
       try {
         const response = await this.$axios.post('/plans', { plan: { name: this.name } })
-        console.log(response)
+        await this.$router.push(`/budgets/${response.data.data.id}`)
       }
       catch (error) {
         console.log(error)
