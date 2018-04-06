@@ -1,6 +1,6 @@
 <template>
   <div class="font-source-sans font-normal text-black leading-normal antialiased max-w-lg w-full m-auto">
-    <header class="pt-8 px-8">
+    <header class="pt-8 px-4">
       <nav class="flex items-center justify-between">
         <div class="text-blue font-bold text-xl pb-4">
           Budget<span class="font-light">Simple</span>
@@ -11,6 +11,7 @@
       </nav>
     </header>
     <nuxt/>
+    <modals-container/>
   </div>
 </template>
 

@@ -3,11 +3,14 @@
     <h1 class="text-grey-darkest py-4">{{ plan.name }}</h1>
 
     <recent-transactions :transactions="plan.recentTransactions"></recent-transactions>
+    <categories :showNewCategoryForm="showNewCategoryForm"></categories>
   </div>
 </template>
 
 <script>
 import RecentTransactions from '~/components/budgets/RecentTransactions.vue'
+import Categories from '~/components/budgets/Categories.vue'
+import NewCategoryForm from '~/components/forms/NewCategoryForm.vue'
 
 export default {
   validate ({ params }) {
@@ -15,7 +18,8 @@ export default {
   },
 
   components: {
-    RecentTransactions
+    RecentTransactions,
+    Categories
   },
 
   asyncData ({ app, params, error }) {
@@ -26,8 +30,13 @@ export default {
     .catch((e) => {
       error({ statusCode: 404, message: 'Budget plan not found' })
     })
-  }
+  },
 
+  methods: {
+    showNewCategoryForm () {
+      this.$modal.show(NewCategoryForm, {}, { adaptive: true })
+    }
+  },
 
 }
 </script>

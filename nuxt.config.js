@@ -65,5 +65,8 @@ module.exports = {
     }
   },
 
-  css: ['~/assets/style.css']
+  css: ['~/assets/style.css'],
+
+  plugins: ['~plugins/vue-js-modal']
+
 }
