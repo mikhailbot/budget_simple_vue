@@ -22,21 +22,21 @@ export default {
     Categories
   },
 
-  asyncData ({ app, params, error }) {
-    return app.$axios.get(`/plans/${params.id}`)
-    .then((response) => {
-      return { plan: response.data.data }
-    })
-    .catch((e) => {
-      error({ statusCode: 404, message: 'Budget plan not found' })
-    })
+  async fetch ({ store, params }) {
+    await store.dispatch('plan/getPlan', params.id)
   },
 
   methods: {
     showNewCategoryForm () {
-      this.$modal.show(NewCategoryForm, {}, { adaptive: true })
+      this.$modal.show(NewCategoryForm, { planId: this.plan.id }, { adaptive: true })
     }
   },
+
+  computed: {
+    plan () {
+      return this.$store.getters['plan/getPlan']
+    }
+  }
 
 }
 </script>

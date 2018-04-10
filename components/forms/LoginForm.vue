@@ -51,8 +51,15 @@ export default {
           data: { session }
         })
         .catch((error) => {
+          console.log(error.response)
           this.error = `Hmm we couldn't log you in, please try again!`
         })
+    }
+  },
+
+  beforeCreate () {
+    if (this.$auth.loggedIn) {
+      this.$router.push('/budgets')
     }
   }
 }

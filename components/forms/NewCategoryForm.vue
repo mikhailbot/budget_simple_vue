@@ -6,10 +6,10 @@
         <label class="block text-grey-darker text-sm font-bold mb-2" for="name">
           Name
         </label>
-        <input class="bg-grey-lighter appearance-none border-2 border-grey-lighter focus:border-blue rounded w-full py-2 px-4 text-grey-darker outline-0" type="text">
+        <input @keyup.enter.prevent="createCategory" class="bg-grey-lighter appearance-none border-2 border-grey-lighter focus:border-blue rounded w-full py-2 px-4 text-grey-darker outline-0" type="text" v-model="name">
       </div>
       <div class="flex items-center justify-between">
-        <button class="bg-blue hover:bg-blue-light text-white font-bold py-2 px-4 border-b-4 border-blue-dark hover:border-blue rounded" type="button">
+        <button @click.prevent="createCategory" class="bg-blue hover:bg-blue-light text-white font-bold py-2 px-4 border-b-4 border-blue-dark hover:border-blue rounded" type="button">
           Create
         </button>
       </div>
@@ -19,7 +19,26 @@
 
 <script>
 export default {
+  props: [ 'planId' ],
 
+  data () {
+    return {
+      name: ''
+    }
+  },
+
+  methods: {
+    async createCategory () {
+      try {
+        const response = await this.$axios.post(`/plans/${this.planId}/categories`, { category: {name: this.name} })
+        this.$store.commit('plan/addCategory', response.data.data)
+        this.$emit('close')
+      }
+      catch (error) {
+        console.log(error)
+      }
+    }
+  }
 }
 </script>
 
