@@ -11,7 +11,7 @@
       <div class="">
 
         <div>
-          <category v-for="category in categories" :key="category.id" :category="category"></category>
+          <category v-for="category in categories" :key="category.id" :category="category" :showCategory="showCategory"></category>
         </div>
         <div class="mx-2">
           <div @click="showNewCategoryForm" class="text-grey-darker text-xs font-bold bg-grey-light hover:bg-grey-lighter rounded border-b-4 border-grey hover:border-grey-light py-2 px-4 inline-flex items-center justify-center w-full md:hidden my-2 pointer">
@@ -28,7 +28,7 @@
 import Category from '~/components/budgets/Category.vue'
 
 export default {
-  props: ['showNewCategoryForm'],
+  props: ['showNewCategoryForm', 'showCategory'],
 
   components: {
     Category

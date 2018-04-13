@@ -3,14 +3,18 @@
     <h1 class="text-grey-darkest py-4">{{ plan.name }}</h1>
 
     <recent-transactions :transactions="plan.recentTransactions"></recent-transactions>
-    <categories :showNewCategoryForm="showNewCategoryForm"></categories>
+    <categories :showNewCategoryForm="showNewCategoryForm" :showCategory="showCategory"></categories>
+    <accounts :showNewAccountForm="showNewAccountForm"></accounts>
   </div>
 </template>
 
 <script>
 import RecentTransactions from '~/components/budgets/RecentTransactions.vue'
 import Categories from '~/components/budgets/Categories.vue'
+import Accounts from '~/components/budgets/Accounts.vue'
 import NewCategoryForm from '~/components/forms/NewCategoryForm.vue'
+import NewAccountForm from '~/components/forms/NewAccountForm.vue'
+import DetailedCategoryVue from '../../components/category/DetailedCategory.vue';
 
 export default {
   validate ({ params }) {
@@ -19,7 +23,8 @@ export default {
 
   components: {
     RecentTransactions,
-    Categories
+    Categories,
+    Accounts
   },
 
   async fetch ({ store, params }) {
@@ -29,6 +34,14 @@ export default {
   methods: {
     showNewCategoryForm () {
       this.$modal.show(NewCategoryForm, { planId: this.plan.id }, { adaptive: true })
+    },
+
+    showNewAccountForm () {
+      this.$modal.show(NewAccountForm, { planId: this.plan.id }, { adaptive: true })
+    },
+
+    showCategory (categoryId) {
+      this.$modal.show(DetailedCategoryVue, { categoryId: categoryId }, { adaptive: true })
     }
   },
 
