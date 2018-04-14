@@ -2,7 +2,7 @@
   <div class="py-8 px-4">
     <h1 class="text-grey-darkest py-4">{{ plan.name }}</h1>
 
-    <recent-transactions :transactions="plan.recentTransactions" :showNewTransactionForm="showNewTransactionForm"></recent-transactions>
+    <recent-transactions :showNewTransactionForm="showNewTransactionForm"></recent-transactions>
     <categories :showNewCategoryForm="showNewCategoryForm" :showCategory="showCategory"></categories>
     <accounts :showNewAccountForm="showNewAccountForm"></accounts>
   </div>

@@ -9,7 +9,9 @@
         </div>
       </div>
       <div class="">
-        <div v-if="transactions"></div>
+        <div v-if="transactions">
+          <transaction v-for="transaction in transactions" :key="transaction.id" :transaction="transaction"></transaction>
+        </div>
         <div v-else>
           <div class="text-grey-dark text-sm w-full md:w-1/2 bg-grey-lighter rounded px-4 py-2 inline-block">No transactions to show for now</div>
         </div>
@@ -23,8 +25,20 @@
 </template>
 
 <script>
+import Transaction from '~/components/budgets/Transaction.vue'
+
 export default {
-    props: ['transactions', 'showNewTransactionForm']
+  props: ['showNewTransactionForm'],
+
+  components: {
+    Transaction
+  },
+
+  computed: {
+    transactions () {
+      return this.$store.getters['plan/listRecentTransactions']
+    }
+  }
 }
 </script>
 

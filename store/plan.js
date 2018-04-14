@@ -82,5 +82,13 @@ export const getters = {
 
   getCategory(state) {
     return state.currentCategory
+  },
+
+  getAccountById: (state) => (id) => {
+    return state.accounts.find(account => account.id === id)
+  },
+
+  getCategoryById: (state) => (id) => {
+    return state.categories.find(category => category.id === id)
   }
 }

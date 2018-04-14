@@ -72,10 +72,10 @@ export default {
     return {
       date: '',
       merchant: '',
-      category_id: 0,
+      category_id: undefined,
       inflow: 0,
       outflow: 0,
-      account_id: 0
+      account_id: undefined
     }
   },
 
