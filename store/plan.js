@@ -105,5 +105,20 @@ export const getters = {
       default:
         return { outflow: 0 }
     }
+  },
+
+  getCategoryInflowTotal: (state) => (id) => {
+    const transactions = [...state.transactions.filter((t) => t.category_id === id)]
+
+    switch (true) {
+      case transactions.length > 1:
+        return transactions.reduce((previous, current) => ({ inflow: current.inflow + previous.inflow }))
+        break
+      case transactions.length === 1:
+        return { inflow: transactions[0].inflow }
+        break
+      default:
+        return { inflow: 0 }
+    }
   }
 }

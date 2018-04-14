@@ -6,7 +6,7 @@
           {{ category.name }}
         </div>
         <div class="text-sm">
-          <div>Spent: {{ formatCurrency(outflowTotal) }}</div>
+          <div>Spent: {{ formatCurrency(outflowTotal - inflowTotal) }}</div>
           <div>Budgeted: $0</div>
         </div>
       </div>
@@ -46,12 +46,16 @@ export default {
       return this.$store.getters['plan/getCategoryOutflowTotal'](this.category.id).outflow
     },
 
+    inflowTotal () {
+      return this.$store.getters['plan/getCategoryInflowTotal'](this.category.id).inflow
+    },
+
     allotmentTotal () {
       return 0
     },
 
     categoryTotal () {
-      return this.allotmentTotal - this.outflowTotal
+      return this.allotmentTotal - (this.outflowTotal - this.inflowTotal)
     }
   }
 }
