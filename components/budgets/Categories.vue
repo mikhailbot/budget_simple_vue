@@ -8,8 +8,7 @@
           Create category
         </div>
       </div>
-      <div class="">
-
+      <div class="-mx-2">
         <div>
           <category v-for="category in categories" :key="category.id" :category="category" :showCategory="showCategory"></category>
         </div>

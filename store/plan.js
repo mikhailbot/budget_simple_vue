@@ -90,5 +90,20 @@ export const getters = {
 
   getCategoryById: (state) => (id) => {
     return state.categories.find(category => category.id === id)
+  },
+
+  getCategoryOutflowTotal: (state) => (id) => {
+    const transactions = [...state.transactions.filter((t) => t.category_id === id)]
+
+    switch (true) {
+      case transactions.length > 1:
+        return transactions.reduce((previous, current) => ({ outflow: current.outflow + previous.outflow }))
+        break
+      case transactions.length === 1:
+        return { outflow: transactions[0].outflow }
+        break
+      default:
+        return { outflow: 0 }
+    }
   }
 }

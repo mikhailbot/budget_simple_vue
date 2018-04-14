@@ -8,8 +8,7 @@
           Create account
         </div>
       </div>
-      <div class="">
-
+      <div class="-mx-2">
         <div>
           <account v-for="account in accounts" :key="account.id" :account="account"></account>
         </div>

@@ -8,7 +8,7 @@
           Add transactions
         </div>
       </div>
-      <div class="">
+      <div class="-mx-2">
         <div v-if="transactions">
           <transaction v-for="transaction in transactions" :key="transaction.id" :transaction="transaction"></transaction>
         </div>
