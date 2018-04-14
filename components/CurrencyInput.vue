@@ -6,6 +6,7 @@
       :guide="true"
       v-on="listeners"
       v-model="currencyValue"
+      class="bg-grey-lighter appearance-none border-2 border-grey-lighter focus:border-blue rounded w-full py-2 px-4 text-grey-darker outline-0"
     />
     </div>
 </template>

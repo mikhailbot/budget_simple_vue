@@ -2,7 +2,7 @@
   <div class="py-8 px-4">
     <h1 class="text-grey-darkest py-4">{{ plan.name }}</h1>
 
-    <recent-transactions :transactions="plan.recentTransactions"></recent-transactions>
+    <recent-transactions :transactions="plan.recentTransactions" :showNewTransactionForm="showNewTransactionForm"></recent-transactions>
     <categories :showNewCategoryForm="showNewCategoryForm" :showCategory="showCategory"></categories>
     <accounts :showNewAccountForm="showNewAccountForm"></accounts>
   </div>
@@ -14,7 +14,8 @@ import Categories from '~/components/budgets/Categories.vue'
 import Accounts from '~/components/budgets/Accounts.vue'
 import NewCategoryForm from '~/components/forms/NewCategoryForm.vue'
 import NewAccountForm from '~/components/forms/NewAccountForm.vue'
-import DetailedCategoryVue from '../../components/category/DetailedCategory.vue';
+import DetailedCategory from '../../components/category/DetailedCategory.vue';
+import NewTransactionForm from '../../components/forms/NewTransactionForm.vue';
 
 export default {
   validate ({ params }) {
@@ -40,8 +41,12 @@ export default {
       this.$modal.show(NewAccountForm, { planId: this.plan.id }, { adaptive: true })
     },
 
+    showNewTransactionForm () {
+      this.$modal.show(NewTransactionForm, { planId: this.plan.id }, { adaptive: true, height: 'auto' })
+    },
+
     showCategory (categoryId) {
-      this.$modal.show(DetailedCategoryVue, { categoryId: categoryId }, { adaptive: true })
+      this.$modal.show(DetailedCategory, { categoryId: categoryId }, { adaptive: true })
     }
   },
 

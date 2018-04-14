@@ -3,7 +3,7 @@ export const state = () => ({
   currentCategory: {},
   categories: [],
   accounts: [],
-  recentTransactions: []
+  transactions: []
 })
 
 export const mutations = {
@@ -11,6 +11,7 @@ export const mutations = {
     state.plan = data.plan
     state.categories = data.categories
     state.accounts = data.accounts
+    state.transactions = data.transactions
   },
 
   addCategory(state, category) {
@@ -21,6 +22,10 @@ export const mutations = {
     state.currentCategory = state.categories.find(c => {
       return c.id === categoryId
     })
+  },
+
+  addTransaction(state, transaction) {
+    state.transactions.push(transaction)
   }
 }
 
@@ -30,7 +35,8 @@ export const actions = {
     const data = {
       plan: response.data.data.plan,
       categories: response.data.data.categories.data.categories,
-      accounts: response.data.data.accounts.data
+      accounts: response.data.data.accounts.data,
+      transactions: response.data.data.transactions.data
     }
     commit('addInitialState', data)
   },
@@ -40,6 +46,16 @@ export const actions = {
       console.log(payload)
       const response = await this.$axios.post(`/plans/${payload.planId}/accounts`, { account: payload.account })
       console.log(response.data)
+    }
+    catch (error) {
+      console.log(error)
+    }
+  },
+
+  async createTransaction({ commit }, payload) {
+    try {
+      const response = await this.$axios.post(`/plans/${payload.planId}/transactions`, { transaction: payload.transaction })
+      commit('addTransaction', response.data.data)
     }
     catch (error) {
       console.log(error)
@@ -57,7 +73,7 @@ export const getters = {
   },
 
   listRecentTransactions(state) {
-    return state.recentTransactions
+    return [...state.transactions].sort((a, b) => a < b).slice(0,4)
   },
 
   getPlan(state) {
