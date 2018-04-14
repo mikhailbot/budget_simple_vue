@@ -3,11 +3,11 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'budget_simple_vue',
+    title: 'BudgetSimple',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Simple shared budgets - Vue Frontend' }
+      { hid: 'description', name: 'description', content: 'Simple shared budgets' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -16,7 +16,7 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#3490dc' },
   /*
   ** Build configuration
   */
@@ -46,7 +46,7 @@ module.exports = {
   },
 
   axios: {
-    baseURL: 'http://budget_simple.local:4000/api'
+    baseURL: process.env.API_URL
   },
 
   auth: {
