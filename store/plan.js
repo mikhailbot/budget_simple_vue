@@ -33,7 +33,6 @@ export const mutations = {
 
 export const actions = {
   async getPlan({ commit }, payload) {
-    console.log(payload)
     const response = await this.$axios.get(`/plans/${payload.planId}?month=${payload.month}`)
 
     const data = {
