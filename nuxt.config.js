@@ -67,6 +67,10 @@ module.exports = {
 
   css: ['~/assets/style.css'],
 
-  plugins: ['~plugins/vue-js-modal']
+  plugins: ['~plugins/vue-js-modal'],
+
+  generate: {
+    fallback: true
+  }
 
 }
