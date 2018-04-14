@@ -1,5 +1,6 @@
 export const state = () => ({
   plan: {},
+  selectedMonth: '',
   currentCategory: {},
   categories: [],
   accounts: [],
@@ -12,6 +13,7 @@ export const mutations = {
     state.categories = data.categories
     state.accounts = data.accounts
     state.transactions = data.transactions
+    state.selectedMonth = data.selectedMonth
   },
 
   addCategory(state, category) {
@@ -30,13 +32,16 @@ export const mutations = {
 }
 
 export const actions = {
-  async getPlan({ commit }, planId) {
-    const response = await this.$axios.get(`/plans/${planId}`)
+  async getPlan({ commit }, payload) {
+    console.log(payload)
+    const response = await this.$axios.get(`/plans/${payload.planId}?month=${payload.month}`)
+
     const data = {
       plan: response.data.data.plan,
       categories: response.data.data.categories.data.categories,
       accounts: response.data.data.accounts.data,
-      transactions: response.data.data.transactions.data
+      transactions: response.data.data.transactions.data,
+      selectedMonth: payload.month
     }
     commit('addInitialState', data)
   },
@@ -60,6 +65,10 @@ export const actions = {
     catch (error) {
       console.log(error)
     }
+  },
+
+  async changeMonth({ state, dispatch }, month) {
+    await dispatch('getPlan', { planId: state.plan.id, month })
   }
 }
 
@@ -120,5 +129,9 @@ export const getters = {
       default:
         return { inflow: 0 }
     }
+  },
+
+  getMonth(state) {
+    return state.selectedMonth
   }
 }
