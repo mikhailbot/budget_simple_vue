@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="-mx-2">
-        <div v-if="transactions">
+        <div v-if="transactions.length">
           <transaction v-for="transaction in transactions" :key="transaction.id" :transaction="transaction"></transaction>
         </div>
         <div v-else>
