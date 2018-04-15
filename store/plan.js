@@ -76,15 +76,15 @@ export const actions = {
 
 export const getters = {
   listCategories(state) {
-    return state.categories
+    return [...state.categories].sort((a, b) => a.name > b.name)
   },
 
   listAccounts(state) {
-    return state.accounts
+    return [...state.accounts].sort((a, b) => a.name > b.name)
   },
 
   listRecentTransactions(state) {
-    return [...state.transactions].sort((a, b) => a < b).slice(0,4)
+    return [...state.transactions].sort((a, b) => a.date < b.date).slice(0,4)
   },
 
   getPlan(state) {
