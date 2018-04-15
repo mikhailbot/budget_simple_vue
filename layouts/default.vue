@@ -5,9 +5,9 @@
         <div class="text-blue font-bold text-xl pb-4">
           Budget<span class="font-light">Simple</span>
         </div>
-        <!-- <div class="text-white">
-          <a @click="logout" class="inline-block align-baseline font-bold text-md text-grey-lightest no-underline hover:underline" href="#">Logout</a>
-        </div> -->
+        <div class="">
+          <a @click.prevent="$auth.logout()" class="inline-block align-baseline font-bold text-md text-grey-darker no-underline hover:underline" href="#">Logout</a>
+        </div>
       </nav>
     </header>
     <nuxt/>
@@ -17,11 +17,7 @@
 
 <script>
 export default {
-  methods: {
-    async logout () {
-      return this.$auth.logout()
-    }
-  }
+
 }
 </script>
 

@@ -57,7 +57,7 @@ module.exports = {
       local: {
         endpoints: {
           login: { url: '/sessions', method: 'post', propertyName: 'access_token' },
-          logout: { url: '/sessions', method: 'delete' },
+          logout: false,
           user: { url: '/users', method: 'get', propertyName: 'data' }
         },
         tokenType: '',

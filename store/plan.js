@@ -28,6 +28,10 @@ export const mutations = {
 
   addTransaction(state, transaction) {
     state.transactions.push(transaction)
+  },
+
+  addAccount(state, account) {
+    state.accounts.push(account)
   }
 }
 
@@ -47,9 +51,8 @@ export const actions = {
 
   async createAccount({ commit }, payload) {
     try {
-      console.log(payload)
       const response = await this.$axios.post(`/plans/${payload.planId}/accounts`, { account: payload.account })
-      console.log(response.data)
+      commit('addAccount', response.data.data)
     }
     catch (error) {
       console.log(error)

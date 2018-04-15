@@ -1,5 +1,6 @@
 <template>
   <div class="w-full max-w-sm m-auto p-2">
+    <busy-overlay></busy-overlay>
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <div class="mb-4">
         <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
@@ -11,7 +12,7 @@
         <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
           Password
         </label>
-        <input class="bg-grey-lighter appearance-none border-2 border-grey-lighter focus:border-blue rounded w-full py-2 px-4 text-grey-darker outline-0" v-model="session.password" type="password" @keyup.enter="login">
+        <input class="bg-grey-lighter appearance-none border-2 border-grey-lighter focus:border-blue rounded w-full py-2 px-4 text-grey-darker outline-0" v-model="session.password" type="password" @keyup.enter.prevent="login">
       </div>
       <div class="mb-6 text-red font-bold" v-if="this.error.length">
         {{ this.error}}
@@ -29,7 +30,13 @@
 </template>
 
 <script>
+import BusyOverlay from '~/components/BusyOverlay.vue'
+
 export default {
+  components: {
+    BusyOverlay
+  },
+
   data () {
     return {
       session: {
@@ -54,12 +61,6 @@ export default {
           console.log(error.response)
           this.error = `Hmm we couldn't log you in, please try again!`
         })
-    }
-  },
-
-  beforeCreate () {
-    if (this.$auth.loggedIn) {
-      this.$router.push('/budgets')
     }
   }
 }
