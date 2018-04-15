@@ -1,7 +1,7 @@
 <template>
   <div class="py-8 px-4">
     <div class="flex justify-between items-center pb-4">
-      <h1 class="text-grey-darkest py-4">{{ plan.name }}</h1>
+      <h1 class="text-grey-darkest leading-tight py-4">{{ plan.name }}</h1>
       <div class="flex flex-col items-end justify-center">
         <label for="selected-month" class="text-grey-dark uppercase text-xs font-bold">Budget Month</label>
         <select v-model="selectedMonth" name="selected-month" id="selected-month" class="bg-grey-lighter appearance-none border-2 border-grey-lighter focus:border-blue rounded py-2 px-4 text-grey-darkest text-lg font-bold outline-0 pointer">

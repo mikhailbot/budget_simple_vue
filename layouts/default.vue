@@ -6,7 +6,7 @@
           Budget<span class="font-light">Simple</span>
         </div>
         <div class="">
-          <a @click.prevent="$auth.logout()" class="inline-block align-baseline font-bold text-md text-grey-darker no-underline hover:underline" href="#">Logout</a>
+          <a @click.prevent="$auth.logout()" class="inline-block align-baseline font-bold text-md text-grey hover:text-grey-darker no-underline hover:underline" href="#">Logout</a>
         </div>
       </nav>
     </header>
