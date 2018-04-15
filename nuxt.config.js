@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   /*
   ** Headers of the page
@@ -39,6 +41,7 @@ module.exports = {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth',
+    '@nuxtjs/dotenv',
   ],
 
   router: {

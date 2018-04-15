@@ -6,7 +6,7 @@
         <label class="block text-grey-darker text-sm font-bold mb-2" for="name">
           Name
         </label>
-        <input @keyup.enter.prevent="createCategory" class="bg-grey-lighter appearance-none border-2 border-grey-lighter focus:border-blue rounded w-full py-2 px-4 text-grey-darker outline-0" type="text" v-model="name" autofocus>
+        <input class="bg-grey-lighter appearance-none border-2 border-grey-lighter focus:border-blue rounded w-full py-2 px-4 text-grey-darker outline-0" type="text" v-model="name" ref="name">
       </div>
       <div class="mb-6">
         <label class="block text-grey-darker text-sm font-bold mb-2" for="account-types">
@@ -41,6 +41,10 @@ export default {
       name: '',
       type: ''
     }
+  },
+
+  mounted () {
+    this.$refs.name.focus()
   },
 
   methods: {

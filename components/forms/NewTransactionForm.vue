@@ -6,7 +6,7 @@
         <label class="block text-grey-darker text-sm font-bold mb-2" for="date">
           Date
         </label>
-        <input v-model="date" class="bg-grey-lighter appearance-none border-2 border-grey-lighter focus:border-blue rounded w-full py-2 px-4 text-grey-darker outline-0" type="date" id="date" />
+        <input v-model="date" class="bg-grey-lighter appearance-none border-2 border-grey-lighter focus:border-blue rounded w-full py-2 px-4 text-grey-darker outline-0" type="date" id="date" ref="date" />
       </div>
       <div class="mb-6">
         <label class="block text-grey-darker text-sm font-bold mb-2" for="account">
@@ -77,6 +77,10 @@ export default {
       outflow: 0,
       account_id: undefined
     }
+  },
+
+  mounted () {
+    this.$refs.date.focus()
   },
 
   methods: {

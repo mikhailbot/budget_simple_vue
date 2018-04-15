@@ -6,7 +6,7 @@
         <label class="block text-grey-darker text-sm font-bold mb-2" for="name">
           Name
         </label>
-        <input @keyup.enter.prevent="createCategory" class="bg-grey-lighter appearance-none border-2 border-grey-lighter focus:border-blue rounded w-full py-2 px-4 text-grey-darker outline-0" type="text" v-model="name" autofocus>
+        <input @keyup.enter.prevent="createCategory" class="bg-grey-lighter appearance-none border-2 border-grey-lighter focus:border-blue rounded w-full py-2 px-4 text-grey-darker outline-0" type="text" v-model="name" ref="name">
       </div>
       <div class="flex items-center justify-between">
         <button @click.prevent="createCategory" class="bg-blue hover:bg-blue-light text-white font-bold py-2 px-4 border-b-4 border-blue-dark hover:border-blue rounded" type="button">
@@ -25,6 +25,10 @@ export default {
     return {
       name: ''
     }
+  },
+
+  mounted () {
+    this.$refs.name.focus()
   },
 
   methods: {
